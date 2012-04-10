@@ -1,24 +1,27 @@
 var 
 	debug		= require('debug')
 	, eyes		= require('eyes')
-	Debugg;
+	, debugg, Debugg;
 
 Debugg = (function () {
-	var	Constructor;
+	var	C;
 
-	Constructor = function (name) {
-		this = debug(name);
+	C = function (name) {
+		var	self;
+		self = debug(name);
+		return self;
 	};
 
-	Constructor.prototype.inspect = function (o, s) {
+	C.prototype.inspect = function (o, s) {
 	}
 	
-	return Constructor;
+	return C;
 })();
 
-
-exports = function (name) {
+debugg = function (name) {
 	return new Debugg(name);
 };
 
-exports.Debugg = Debugg;
+debugg.Debugg = Debugg;
+
+module.exports = debugg;

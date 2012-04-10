@@ -1,0 +1,7 @@
+.nide
+.DS_Store
+.gitignore
+*.esproj
+*.tmproj
+*.sublime-project
+*.sublime-workspace

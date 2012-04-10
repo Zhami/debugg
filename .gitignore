@@ -1,0 +1,5 @@
+.nide
+.DS_Store
+*.esproj
+*.tmproj
+node_modules

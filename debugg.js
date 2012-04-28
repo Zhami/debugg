@@ -2,27 +2,25 @@ var
 	debug		= require('debug')
 	, Emitter	= require('events').EventEmitter
 	, eyes		= require('eyes')
-	, stream	= require('stream')
+	, Stream	= require('stream').Stream
 	, util		= require('util')
-	, debugg, Debugg, Stream;
+	, debugg, Debugg, Proxy;
 
 // eyes doesn't print the label when returning the string (stream=null)
 // so we give it a stream
 
-Stream = function () {
-	//stream.Stream.call(this);
-	Emitter.call(this);
+Proxy = function () {
+	//Stream is an abstraction
+	//Emitter.call(this);
+	Stream.call(this);
 	this.writable = true;
 };
-//
-// Inherit from `stream.Stream`
-//
-//util.inherits(Stream, stream.Stream);
-util.inherits(Stream, Emitter);
+util.inherits(Proxy, Stream);	// Inherit from `EventEmitter`
 
 
-Stream.prototype.write = function (data) {
+Proxy.prototype.write = function (data) {
 	this.emit('data', data);
+	return true;
 };
 
 
@@ -30,14 +28,19 @@ Debugg = (function () {
 	var	C;
 
 	C = function (name, options) {
-		var	f, myStream;
+		var	f, proxy;
+
 		f = function (s) {
 			f.debug(s);
 		};
-		myStream = new Stream();
-		f.stream = myStream;
+
+		proxy = new Proxy();
+		proxy.on("data", function (data) {
+			f.debug(data);
+		});
+		f.proxy = proxy;
 		options = options || {};
-		options.stream = myStream;
+		options.stream = proxy;
 		f.options = options;
 		f.debug = debug(name);
 		f.inspector = eyes.inspector(options);
@@ -48,17 +51,12 @@ Debugg = (function () {
 
 	C.prototype.inspect = function (o, label) {
 		var self = this;
-
-		this.stream.on("data", function (data) {
-			self.debug(data);
-		});
-
-		this.stream.on("end", function () {
-console.log("stream ended")
-		});
-		
 		this.inspector(o, label);		// writes to stream
+	};
 
+	// used just to test the write through the proxy
+	C.prototype.write = function (s) {
+		this.proxy.write(s);
 	}
 	
 	return C;

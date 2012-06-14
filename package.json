@@ -1,14 +1,13 @@
 {
-  "name"				: "debugg"
-, "version"				: "0.0.1"
-, "description"			: "debug with eyes"
-, "keywords"			: ["debug eyes"]
-, "author"				: "Stuart Malin <stuart@envisixlabs.com> (http://envisixlabs.com/)"
-, "private"				: true
-, "dependencies"		: {
-	"debug"				: "*"
-	, "eyes"			: ">=0.1.7"
-}
-, "main"				: "debugg"
-, "engines"				: { "node": ">= 0.6.0 < 0.7.0" }
+	"author"				: "Stuart Malin <stuart@envisixlabs.com> (http://envisixlabs.com/)"
+	, "name"				: "debugg"
+	, "description"			: "debug with eyes"
+	, "version"				: "0.0.1"
+	, "keywords"			: ["debug eyes"]
+	, "engines"				: { "node": ">= 0.6.0" }
+	, "dependencies"		: {
+		"debug"				: "*"
+		, "eyes"			: ">=0.1.7"
+		}
+	, "main"				: "debugg"
 }

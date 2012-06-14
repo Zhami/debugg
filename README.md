@@ -20,7 +20,8 @@ Example
     debugg.write('Hello (via .write)');
     // NOTE:
     // be sure to set DEBUG= in command line invocation!
-    // For this example:  DEBUG=example
+
+see the example.js for additional details and info
 
 
 Contributors

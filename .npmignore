@@ -1,3 +1,4 @@
+.gitignore
 .nide
 .DS_Store
 *.sublime-project

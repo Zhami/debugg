@@ -1,5 +1,6 @@
 .nide
 .DS_Store
-*.esproj
+*.sublime-project
+*.sublime-workspace
 *.tmproj
 node_modules

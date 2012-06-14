@@ -3,10 +3,10 @@
 , "version"				: "0.0.1"
 , "description"			: "debug with eyes"
 , "keywords"			: ["debug eyes"]
-, "author"				: "Stuart Malin <stuart@yellowhelium.com> (http://yellowhelium.com)"
+, "author"				: "Stuart Malin <stuart@envisixlabs.com> (http://envisixlabs.com/)"
 , "private"				: true
 , "dependencies"		: {
-	"debug"			: "*"
+	"debug"				: "*"
 	, "eyes"			: ">=0.1.7"
 }
 , "main"				: "debugg"
